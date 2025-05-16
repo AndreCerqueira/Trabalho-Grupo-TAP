@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _TimeParam: 1.0009086
+    - _TimeParam: 1.0029259
     m_Colors:
     - _Aspect: {r: 1, g: 1, b: 0, a: 0}
     - _Center: {r: 0.48125, g: 0.48125, b: 0, a: 0}
