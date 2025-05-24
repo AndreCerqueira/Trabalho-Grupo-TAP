@@ -35,12 +35,12 @@ public class CardDissolveLooper : MonoBehaviour
         {
             var t = elapsed / time;
             var progress = Mathf.Lerp(from, to, t);
-            _material.SetFloat("_DissolveSlider", progress);
+            _material.SetFloat("_RevealValue", progress);
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        _material.SetFloat("_DissolveSlider", to);
+        _material.SetFloat("_RevealValue", to);
     }
 }
