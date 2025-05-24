@@ -3,6 +3,7 @@ Shader "Unlit/CardPlay_Shader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _BackTex ("Back Texture", 2D) = "white" {}
         _ProgressSlider ("Progress", Range(0, 1)) = 0
         _ScaleFactor ("Scale Factor", Float) = 0
         _FadeColor ("Fade Color", Color) = (1,1,1,1)
@@ -11,7 +12,7 @@ Shader "Unlit/CardPlay_Shader"
     {
         Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
         Blend SrcAlpha OneMinusSrcAlpha
-        ZWrite Off ZTest Always
+        ZWrite Off
 
         Pass
         {
@@ -64,6 +65,45 @@ Shader "Unlit/CardPlay_Shader"
                 col.rgb *= fadedColor.rgb;
                 col.a = 1 - _ProgressSlider;
                 return col;
+            }
+            ENDCG
+        }
+
+        Pass
+        {
+            Cull Front
+            
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "UnityCG.cginc"
+
+            sampler2D _BackTex;
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.uv;
+                return o;
+            }
+
+            fixed4 frag (v2f i) : SV_Target
+            {
+                return tex2D(_BackTex, i.uv);
             }
             ENDCG
         }

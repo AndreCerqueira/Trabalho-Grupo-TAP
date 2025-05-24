@@ -3,6 +3,7 @@ Shader "Custom/OldTvShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _BackTex ("Back Texture", 2D) = "white" {}
         _EffectTex ("Effect Texture", 2D) = "white" {}
         _ScrollSpeed ("Vertical Scroll Speed", Float) = 0.5
         _Transparency ("Transparency", Range(0, 1)) = 1.0
@@ -15,7 +16,7 @@ Shader "Custom/OldTvShader"
         Pass
         {
             Blend SrcAlpha OneMinusSrcAlpha
-            Cull Off
+            Cull Back
             ZWrite Off
 
             CGPROGRAM
@@ -65,6 +66,45 @@ Shader "Custom/OldTvShader"
                 return col;
             }
 
+            ENDCG
+        }
+
+        Pass
+        {
+            Cull Front
+            
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "UnityCG.cginc"
+
+            sampler2D _BackTex;
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.uv;
+                return o;
+            }
+
+            fixed4 frag (v2f i) : SV_Target
+            {
+                return tex2D(_BackTex, i.uv);
+            }
             ENDCG
         }
     }

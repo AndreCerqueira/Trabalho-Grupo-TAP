@@ -13,7 +13,7 @@ Shader "Hidden/CardDissolveShader"
     {
         Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
         Blend SrcAlpha OneMinusSrcAlpha
-        ZWrite Off ZTest Always
+        ZWrite Off
 
         Pass
         {

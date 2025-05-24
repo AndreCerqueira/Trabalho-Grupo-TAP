@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CardPlay_Mat
-  m_Shader: {fileID: 4800000, guid: 4c0f162edb37bf4479fb8d1679a67ae4, type: 3}
+  m_Name: WaterShader
+  m_Shader: {fileID: 4800000, guid: a23592b7f7fa96543a029c2accf10c0c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,19 +23,30 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BackTex:
-        m_Texture: {fileID: 2800000, guid: eaf78c32f9992814e95d1bc29702a903, type: 3}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTex:
+    - _Normal1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ProgressSlider: 0
-    - _ScaleFactor: 0.25
+    - _EmissionStrength: 2
+    - _FoamIntensity: 0.05
+    - _FoamThreshold: 0.5
+    - _IsLava: 0
+    - _WaveFrequency: 1
+    - _WaveHeight: 0.1
+    - _WaveSpeed: 1
     m_Colors:
-    - _FadeColor: {r: 1, g: 1, b: 0.3726415, a: 1}
+    - _CrackColor: {r: 1, g: 1, b: 0.5, a: 1}
+    - _LavaColor: {r: 1, g: 0.29999998, b: 0, a: 1}
+    - _WaterColor: {r: 0, g: 0.5, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
