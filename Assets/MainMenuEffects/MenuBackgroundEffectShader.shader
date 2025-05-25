@@ -61,15 +61,11 @@ Shader "Custom/RadialRaysSimple"
                 float2 screenUV = i.screenPos.xy / i.screenPos.w;
                 float2 fragCoord = screenUV * _ScreenParams.xy;
                 float2 resolution = _ScreenParams.xy;
-                
-                // Convert to centered coordinates
                 float2 uv = (fragCoord - resolution * 0.5) / min(resolution.x, resolution.y);
                 
                 // Calculate distance and angle
                 float dist = length(uv);
                 float angle = atan2(uv.y, uv.x);
-                
-                // Add rotation
                 angle += _Time.y * _RotationSpeed;
                 
                 // Create 16 rays with 40% width

@@ -43,11 +43,6 @@ Shader "Unlit/ShockShader"
                 return o;
             }
 
-            float sdBox(float2 p, float2 b) {
-                float2 d = abs(p) - b;
-                return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0);
-            }
-
             float getOffsetStrength(float t, float2 dir, float2 aspect) {
                 float maxRadius = 0.5;
                 float d = length(dir / aspect) - t * maxRadius;

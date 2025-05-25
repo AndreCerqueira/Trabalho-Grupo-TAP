@@ -1,4 +1,4 @@
-Shader "Custom/ShaderToyConverted"
+Shader "Custom/LoadingShader"
 {
     Properties
     {
@@ -78,17 +78,12 @@ Shader "Custom/ShaderToyConverted"
             
             fixed4 frag(v2f i) : SV_Target
             {
-                // Get screen coordinates (equivalent to fragCoord)
                 float2 screenUV = i.screenPos.xy / i.screenPos.w;
                 float2 fragCoord = screenUV * _ScreenParams.xy;
                 
-                // Equivalent to iResolution in ShaderToy
                 float2 iResolution = _ScreenParams.xy;
-                
-                // Equivalent to iTime in ShaderToy
                 float iTime = _Time.y * _TimeMultiplier;
                 
-                // Original shader logic converted
                 float pos = length((fragCoord - iResolution.xy * 0.5) / iResolution.yy);
                 
                 float f1 = sin(pos * _Scale1.x - iTime * _Scale1.y);
