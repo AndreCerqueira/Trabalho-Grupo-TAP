@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TileCircle_Default_Mat
-  m_Shader: {fileID: 4800000, guid: 2c90c0e5a19d6a44e99517eddfb703be, type: 3}
+  m_Shader: {fileID: 4800000, guid: 37e40f7a2e748c14187f88c8ccc55cb8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
